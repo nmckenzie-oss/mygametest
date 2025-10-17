@@ -2,26 +2,105 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Simple Quiz</title>
-    </head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earth Science Quiz</title>
+    <!-- Load Tailwind CSS for modern styling and responsiveness -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #e2e8f0; /* Light slate background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        #quiz-box {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 16px; /* Rounded corners */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px; /* Max width for desktop viewing */
+        }
+        #question {
+            font-size: 1.5rem; /* Larger question text */
+            font-weight: 700;
+            color: #1e293b; /* Dark text */
+            margin-bottom: 25px;
+            min-height: 60px; /* Prevent layout shift */
+        }
+        #answers {
+            display: grid;
+            gap: 12px; /* Spacing between buttons */
+            margin-bottom: 25px;
+        }
+        .answer-btn {
+            text-align: left;
+            padding: 12px 16px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #334155;
+            cursor: pointer;
+            border: 1px solid #cbd5e1;
+            transition: all 0.2s;
+        }
+        .answer-btn:disabled {
+            cursor: not-allowed;
+        }
+        /* Style for the Next button */
+        #next-btn {
+            width: 100%;
+            padding: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            background-color: #3b82f6; /* Blue primary color */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+        #next-btn:hover:not(:disabled) {
+            background-color: #2563eb;
+            transform: translateY(-1px);
+        }
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+            #quiz-box {
+                margin: 10px;
+                padding: 20px;
+            }
+            #question {
+                font-size: 1.25rem;
+                min-height: 50px;
+            }
+        }
+    </style>
+</head>
 <body>
 
-    <div id="quiz-container">
-        <h1>My Simple Quiz</h1>
+    <div id="quiz-box">
         
-        <div id="question">
-            Loading question...
+        <!-- This is where the question will appear -->
+        <h2 id="question" class="text-center">Loading Quiz...</h2>
+        
+        <!-- This is where the buttons for the answers will appear -->
+        <div id="answers">
+            <!-- Buttons will be generated here by script.js -->
         </div>
         
-        <div id="answers" class="btn-grid">
-            </div>
-
-        <button id="next-btn" style="display: none;">Next Question</button>
-
-        <div id="results" style="display: none;">
-            </div>
+        <!-- This button handles navigation or game restart -->
+        <button id="next-btn" style="display: none;">Next</button>
         
     </div>
-<script src="script.js"></script> 
-    </body>
+
+    <!-- The core logic that loads the JSON and runs the quiz -->
+    <script src="script.js"></script>
+
+</body>
 </html>
